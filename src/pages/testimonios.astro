@@ -1,0 +1,57 @@
+---
+import Layout from "../components/layout/Layout.astro";
+import SectionTitle from "../components/ui/SectionTitle.astro";
+import { testimonials } from "../data/testimonials";
+import config from "../data/config.json";
+
+const { seo } = config;
+---
+
+<Layout 
+  title={seo.titleTestimonios} 
+  description={seo.descriptionTestimonios}
+>
+  <section class="h-72 bg-brand-black relative flex items-center pt-24 border-b border-white/5">
+    <div class="container mx-auto px-6">
+      <nav class="mb-4">
+        <p class="font-condensed text-brand-gray text-sm tracking-[0.2em]">
+          <a href="/" class="hover:text-brand-white uppercase">Inicio</a> / <span class="text-brand-red uppercase">Testimonios</span>
+        </p>
+      </nav>
+      <h1 class="font-display text-5xl md:text-7xl text-brand-white uppercase">TESTIMONIOS</h1>
+    </div>
+  </section>
+
+  <section class="bg-brand-black py-24">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {testimonials.map((t, index) => (
+          <div 
+            class="bg-brand-gray-light p-8 border-b-2 border-brand-red flex flex-col justify-between animate-on-scroll"
+            style={`transition-delay: ${index * 100}ms`}
+          >
+            <div>
+              <div class="text-brand-red mb-6">
+                <svg class="w-10 h-10 opacity-30" fill="currentColor" viewBox="0 0 32 32">
+                   <path d="M10 8v8h6v-8h-6zM10 24h6v-8h-6v8zM18 8v8h6v-8h-6zM18 24h6v-8h-6v8z"></path>
+                </svg>
+              </div>
+              <p class="font-body text-brand-white/90 italic mb-8 leading-relaxed">
+                "{t.texto}"
+              </p>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full overflow-hidden bg-brand-black">
+                 <img src={t.foto} alt={t.nombre} class="w-full h-full object-cover" />
+              </div>
+              <div>
+                <p class="font-condensed text-brand-white text-sm tracking-widest uppercase">{t.nombre}</p>
+                <p class="font-condensed text-brand-red text-xs uppercase">{t.club}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

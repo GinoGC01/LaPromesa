@@ -1,0 +1,12 @@
+{
+  "id": "sm-futbol",
+  "nombre": "San Miguel",
+  "imagen_front": "/images/designs/sm_front.PNG",
+  "imagen_back": "/images/designs/sm_back.PNG",
+  "deporte": "Fútbol",
+  "division": "Masculino",
+  "colores": ["negro", "blanco", "rojo"],
+  "tipo": "Conjunto Competencia",
+  "descripcion": "Diseño icónico y agresivo para el equipo SM. Confeccionado en Microfibra Dry-Fit de alta performance.",
+  "destacado": true
+}

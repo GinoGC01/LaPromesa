@@ -1,0 +1,21 @@
+---
+import StatCard from "../ui/StatCard.astro";
+import config from "../../data/config.json";
+
+const { trustBar } = config;
+---
+
+<section class="bg-brand-red w-full">
+  <div class="container mx-auto px-6 py-8 flex flex-wrap md:flex-nowrap justify-center md:justify-between items-center gap-8 md:gap-0">
+    {trustBar.metricas.map((stat, index) => (
+      <>
+        <div class="flex-1 min-w-[200px]">
+          <StatCard number={stat.numero} label={stat.label} />
+        </div>
+        {index < trustBar.metricas.length - 1 && (
+          <div class="hidden md:block w-px h-10 bg-white/30"></div>
+        )}
+      </>
+    ))}
+  </div>
+</section>

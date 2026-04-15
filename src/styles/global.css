@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@400;600&family=Inter:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-black: #0A0A0A;
+  --color-brand-red: #E8001D;
+  --color-brand-red-dark: #B0001A;
+  --color-brand-white: #F5F5F5;
+  --color-brand-gray: #6B6B6B;
+  --color-brand-gray-light: #1A1A1A;
+
+  --font-family-display: "Anton", sans-serif;
+  --font-family-condensed: "Barlow Condensed", sans-serif;
+  --font-family-body: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-brand-black);
+    color: var(--color-brand-white);
+    font-family: var(--font-family-body);
+  }
+}
+
+.animate-on-scroll, .animate-on-scroll-react {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 400ms ease-out, transform 400ms ease-out;
+}
+
+.animate-on-scroll.is-visible, .animate-on-scroll-react.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.diagonal-clip {
+  clip-path: polygon(0 0, 100% 0, 100% 97%, 0 100%);
+}
+
+/* 3D Flip Card System */
+.card-flip-container {
+  perspective: 1000px;
+  width: 100%;
+  height: 100%;
+}
+
+.card-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.card-flip-container.is-flipped .card-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.card-flip-front, .card-flip-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-flip-back {
+  transform: rotateY(180deg);
+}
+
+/* Layered Hero Typography Effects */
+.hero-text-ghost {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--color-brand-red);
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.5;
+}
+
+/* Hero Animations */
+@keyframes hero-ghost-in {
+  from { opacity: 0; transform: scale(1.1) translate(-50%, -50%); }
+  to { opacity: 1; transform: scale(1) translate(-50%, -50%); }
+}
+
+@keyframes hero-foreground-in {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-text-ghost-enter {
+  animation: hero-ghost-in 1200ms ease-out forwards;
+  animation-delay: 200ms;
+  opacity: 0;
+}
+
+.hero-text-foreground-enter {
+  animation: hero-foreground-in 800ms ease-out forwards;
+  animation-delay: 400ms;
+  opacity: 0;
+}
+
+.hero-cta-enter {
+  animation: hero-foreground-in 800ms ease-out forwards;
+  animation-delay: 600ms;
+  opacity: 0;
+}

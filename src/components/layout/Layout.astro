@@ -1,0 +1,94 @@
+---
+import Footer from "./Footer.astro";
+import Navbar from "./Navbar.astro";
+import WhatsAppFloat from "../ui/WhatsAppFloat.astro";
+import "../../styles/global.css";
+import config from "../../data/config.json";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const { schema, seo, empresa } = config;
+
+// Create JsonLd LocalBusiness data
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: schema.name,
+  image: `${seo.siteUrl}/images/og-image.webp`,
+  url: schema.url,
+  telephone: schema.telephone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: schema.streetAddress,
+    addressLocality: schema.addressLocality,
+    addressRegion: schema.addressRegion,
+    postalCode: schema.postalCode,
+    addressCountry: schema.addressCountry,
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: schema.latitude,
+    longitude: schema.longitude,
+  },
+  openingHoursSpecification: schema.openingHours.map((hours) => ({
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: hours.split(" ")[1].split("-")[0],
+    closes: hours.split(" ")[1].split("-")[1],
+  })),
+};
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+    <title>{title} | {empresa.nombre}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={seo.siteUrl} />
+
+    <!-- OG Tags -->
+    <meta property="og:title" content={`${title} | ${empresa.nombre}`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={seo.siteUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={`${seo.siteUrl}/images/og-image.webp`} />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body
+    class="bg-brand-black text-brand-white font-body selection:bg-brand-red selection:text-white"
+  >
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <!-- <WhatsAppFloat /> -->
+
+    <!-- Scroll Reveal Script -->
+    <script>
+      import "../../scripts/scroll-observer.js";
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

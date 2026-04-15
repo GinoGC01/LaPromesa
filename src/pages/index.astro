@@ -1,0 +1,86 @@
+---
+import Layout from "../components/layout/Layout.astro";
+import Hero from "../components/home/Hero.astro";
+import TrustBar from "../components/home/TrustBar.astro";
+import SportsGrid from "../components/home/SportsGrid.astro";
+import FeaturedDesigns from "../components/home/FeaturedDesigns.astro";
+import SiteOverview from "../components/home/SiteOverview.astro";
+import SectionTitle from "../components/ui/SectionTitle.astro";
+import Button from "../components/ui/Button.astro";
+import config from "../data/config.json";
+
+const { seo, proceso, ctaFinal } = config;
+---
+
+<Layout title="Inicio" description={seo.descriptionHome}>
+  <Hero />
+  <TrustBar />
+  <SportsGrid />
+  <FeaturedDesigns />
+
+  <!-- Work Process Section -->
+  <section class="bg-brand-black py-24 md:py-36 relative overflow-hidden">
+    <div class="container mx-auto px-6">
+      <SectionTitle
+        title="NUESTRO PROCESO"
+        subtitle="DEL DISEÑO A LA CANCHA EN PASOS SIMPLES"
+        centered={true}
+      />
+
+      <div class="relative mt-20">
+        <!-- Connecting Line (Desktop) -->
+        <div
+          class="hidden lg:block absolute top-[60px] left-0 w-full h-[2px] bg-brand-red/20 z-0"
+        >
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8"
+        >
+          {
+            proceso.pasos.map((step) => (
+              <div class="relative z-10 flex flex-col items-center lg:items-start text-center lg:text-left animate-on-scroll">
+                <span class="font-display text-7xl md:text-8xl text-brand-red leading-none mb-4">
+                  {step.numero}
+                </span>
+                <h3 class="font-condensed text-2xl text-brand-white uppercase mb-3 tracking-wide">
+                  {step.titulo}
+                </h3>
+                <p class="font-body text-sm text-brand-gray leading-relaxed max-w-xs">
+                  {step.descripcion}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <SiteOverview />
+
+  <!-- Final CTA block -->
+  <section class="bg-brand-red py-24 md:py-32">
+    <div class="container mx-auto px-6 text-center animate-on-scroll">
+      <h2
+        class="font-display text-5xl md:text-7xl text-white uppercase leading-none md:leading-[0.9] mb-6 font-bold"
+      >
+        {ctaFinal.titulo.split("?")[0]}?
+      </h2>
+      <p
+        class="font-condensed text-xl md:text-2xl text-white/90 uppercase tracking-widest mb-10"
+      >
+        {ctaFinal.subtitulo}
+      </p>
+
+      <div class="flex justify-center">
+        <Button
+          variant="secondary"
+          text={ctaFinal.botonTexto}
+          icon={true}
+          class="!border-white !text-white hover:!bg-white hover:!text-brand-red !py-4 !px-8 text-lg"
+        />
+      </div>
+    </div>
+  </section>
+</Layout>

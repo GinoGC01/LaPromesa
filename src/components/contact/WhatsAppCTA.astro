@@ -1,0 +1,26 @@
+---
+import { getWhatsAppUrl } from "../../utils/whatsapp";
+
+const whatsappUrl = getWhatsAppUrl();
+
+interface Props {
+  text?: string;
+  class?: string;
+}
+
+const { text = "CHATEÁ CON NOSOTROS", class: className } = Astro.props;
+---
+
+<a 
+  href={whatsappUrl}
+  target="_blank"
+  class:list={[
+    "inline-flex items-center gap-4 bg-[#25D366] text-white px-8 py-4 rounded-[2px] font-condensed tracking-[0.2em] transition-all hover:brightness-110 active:scale-95 group",
+    className
+  ]}
+>
+  <span class="text-sm">{text}</span>
+  <svg class="w-6 h-6 transition-transform group-hover:rotate-12" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M12.031 6.172c-2.135 0-3.882 1.747-3.882 3.882 0 .633.151 1.259.444 1.821l-.472 1.725 1.766-.464c.542.296 1.151.453 1.774.453 2.135 0 3.844-1.747 3.882-3.882.019-1.04-.373-2.023-1.109-2.759s-1.719-1.147-2.759-1.147-3.414 0-3.414 0zm3.431 5.318c-.094.266-.547.514-.761.547-.214.033-.429.056-.644.056-.57 0-1.14-.149-1.616-.439-.476-.29-.86-.682-1.15-1.159-.29-.476-.439-1.04-.439-1.616 0-.214.022-.429.056-.644.033-.214.281-.667.547-.761.094-.033.204-.056.314-.056.094 0 .188.017.276.05l1.045 2.508c.033.088.05.182.05.276-.017.094-.04.204-.077.298z"/>
+  </svg>
+</a>

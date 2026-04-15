@@ -1,0 +1,12 @@
+{
+  "id": "felinas-rugby",
+  "nombre": "FELINAS XV",
+  "imagen_front": "/images/designs/felinas_front.PNG",
+  "imagen_back": "/images/designs/felinas_back.PNG",
+  "deporte": "Rugby",
+  "division": "Femenino",
+  "colores": ["violeta", "blanco"],
+  "tipo": "Camiseta Pro-Fit",
+  "descripcion": "Resistencia máxima y ajuste anatómico. El diseño Felinas está pensado para el contacto extremo sin perder estilo.",
+  "destacado": true
+}

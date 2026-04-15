@@ -1,0 +1,123 @@
+---
+import SectionTitle from "../ui/SectionTitle.astro";
+import Button from "../ui/Button.astro";
+import Badge from "../ui/Badge.astro";
+import config from "../../data/config.json";
+
+const { disenos } = config;
+
+// Import designs using Vite's glob (Astro 6+)
+const designFiles = import.meta.glob("../../content/designs/*.json", {
+  eager: true,
+});
+const featuredDesigns = Object.entries(designFiles)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([_, file]: any) => file.default)
+  .filter((d) => d.destacado)
+  .slice(0, 6);
+---
+
+<section class="bg-[#111111] py-24 md:py-36">
+  <div class="container mx-auto px-6">
+    <SectionTitle
+      title={disenos.titulo}
+      subtitle={disenos.subtitulo}
+      accentWord={disenos.accent}
+    />
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 mt-20">
+      {
+        featuredDesigns.map((design) => (
+          <div class="flex flex-col gap-5 animate-on-scroll">
+            <div class="card-flip-container aspect-[3/4] group cursor-pointer lg:hover:shadow-2xl transition-shadow duration-500">
+              <div class="card-flip-inner lg:group-hover:[transform:rotateY(180deg)]">
+                {/* Front */}
+                <div class="card-flip-front overflow-hidden bg-brand-gray-light">
+                  <img
+                    src={design.imagen_front}
+                    alt={design.nombre}
+                    class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+
+                {/* Back */}
+                <a
+                  href="/galeria"
+                  target="_blank"
+                  class="card-flip-back overflow-hidden bg-brand-gray-light"
+                >
+                  <img
+                    src={design.imagen_back}
+                    alt={`${design.nombre} dorso`}
+                    class="w-full h-full object-contain"
+                  />
+                </a>
+              </div>
+            </div>
+
+            <div class="flex flex-col items-start gap-2">
+              <h3 class="font-condensed text-xl text-brand-white uppercase tracking-wider">
+                {design.nombre}
+              </h3>
+              <div class="flex gap-2">
+                <Badge text={design.deporte} />
+                <Badge text={design.division.replace("-", " ")} />
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="flex justify-center mt-20">
+      <Button
+        text={disenos.cta}
+        href="/galeria"
+        variant="primary"
+        class="!text-lg !py-4 !px-10"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  @reference "../../styles/global.css";
+
+  @media (min-width: 1024px) {
+    .card-flip-container:hover .card-flip-inner {
+      transform: rotateY(180deg);
+    }
+  }
+
+  .card-flip-container.is-flipped .card-flip-inner {
+    transform: rotateY(180deg);
+  }
+</style>
+
+<script>
+  // Handing touch for flip cards on home page
+  const flipCards = document.querySelectorAll(".card-flip-container");
+
+  flipCards.forEach((card) => {
+    card.addEventListener("click", (e) => {
+      const isTouch = window.matchMedia("(hover: none)").matches;
+      if (!isTouch) return;
+
+      const isFlipped = card.classList.contains("is-flipped");
+
+      if (!isFlipped) {
+        // First tap: Flip
+        e.preventDefault();
+        // Close others
+        flipCards.forEach((c) => c.classList.remove("is-flipped"));
+        card.classList.add("is-flipped");
+      } else {
+        // Second tap: Let the link in the back card work or just go to gallery
+        // If they click the button in back-card it works, if they click the card again we go to gallery
+        if (!(e.target as HTMLElement).closest("a")) {
+          window.location.href = "/galeria";
+        }
+      }
+    });
+  });
+</script>

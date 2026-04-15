@@ -1,0 +1,108 @@
+---
+import Button from "../ui/Button.astro";
+import config from "../../data/config.json";
+
+const { hero } = config;
+---
+
+<section
+  class="h-[100svh] relative overflow-hidden flex items-center justify-center bg-brand-black"
+>
+  <!-- Layer 0: Background Media -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src={hero.bgImage}
+      alt="Hero Background"
+      class="w-full h-full object-cover grayscale brightness-50"
+      loading="eager"
+    />
+  </div>
+
+  <!-- Layer 1: Background Ghost Text -->
+  <div
+    class="absolute md:top-1/2 left-1/2 top-[38%] z-10 w-full text-center px-4 hero-text-ghost-enter"
+  >
+    <h2
+      class="font-display text-[60px] md:text-[230px] lg:text-[250px] leading-none tracking-tighter hero-text-ghost uppercase"
+    >
+      {hero.tituloFondo}
+    </h2>
+  </div>
+
+  <!-- Layer 2: Dark Overlay (Integrated with Layer 0 usually, but placing here for explicit stacking) -->
+  <div
+    class="absolute inset-0 z-20 bg-gradient-to-b from-brand-black/60 via-brand-black/40 to-brand-black/95"
+  >
+  </div>
+
+  <!-- Layer 3: Main Subject (Optional) -->
+  <!-- Omitted per instructions since we use a full background image -->
+
+  <!-- Layer 4: Foreground Content -->
+  <div
+    class="container mx-auto px-6 relative z-30 text-center flex flex-col items-center gap-6"
+  >
+    <span
+      class="font-condensed text-brand-red tracking-[0.4em] text-xs md:text-sm uppercase animate-on-scroll"
+    >
+      {hero.tagline}
+    </span>
+
+    <div class="hero-text-foreground-enter">
+      <h1
+        class="font-display text-[40px] md:text-[150px] lg:text-[180px] text-brand-white leading-[0.85] uppercase tracking-tighter font-bold"
+        style="text-shadow: 0 4px 32px rgba(0,0,0,0.8)"
+      >
+        {hero.tituloPrimerPlano}
+      </h1>
+    </div>
+
+    <p
+      class="font-body text-white text-lg md:text-xl max-w-xl leading-relaxed animate-on-scroll delay-150 pt-10"
+    >
+      {hero.subtitulo}
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 mt-8 hero-cta-enter">
+      <Button
+        text={hero.ctaPrimarioTexto}
+        href={hero.ctaPrimarioHref}
+        variant="primary"
+        class="!px-10 !py-4 text-sm"
+      />
+      <Button
+        text={hero.ctaSecundarioTexto}
+        variant="secondary"
+        icon={true}
+        class="!px-10 !py-4 text-sm"
+      />
+    </div>
+  </div>
+
+  <!-- Scroll Down Indicator -->
+  <div
+    class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-40 z-30"
+  >
+    <svg
+      class="w-6 h-6 text-white"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
+</section>
+
+<style>
+  @reference "../../styles/global.css";
+
+  /* Additional fine-tuning if needed */
+  h1 {
+    -webkit-font-smoothing: antialiased;
+  }
+</style>

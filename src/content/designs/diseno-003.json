@@ -1,0 +1,12 @@
+{
+  "id": "guerreras-hockey",
+  "nombre": "GUERRERAS ELITE",
+  "imagen_front": "/images/designs/guerreras_front.PNG",
+  "imagen_back": "/images/designs/guerreras_back.PNG",
+  "deporte": "Hockey",
+  "division": "Femenino",
+  "colores": ["celeste", "blanco", "negro"],
+  "tipo": "Conjunto Hockey",
+  "descripcion": "Diseño dinámico con tecnología de aireado lateral. Estilo y comodidad para el máximo nivel de hockey.",
+  "destacado": true
+}

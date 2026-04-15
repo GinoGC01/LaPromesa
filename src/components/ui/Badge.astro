@@ -1,0 +1,19 @@
+---
+interface Props {
+  text: string;
+  variant?: "default" | "red";
+}
+
+const { text, variant = "default" } = Astro.props;
+
+const styles = variant === "red" 
+  ? "bg-brand-red text-white border-brand-red" 
+  : "bg-[#1A1A1A] text-brand-white border-brand-red";
+---
+
+<span class:list={[
+  "font-condensed text-xs uppercase px-2 py-0.5 border rounded-[2px] tracking-wider",
+  styles
+]}>
+  {text}
+</span>

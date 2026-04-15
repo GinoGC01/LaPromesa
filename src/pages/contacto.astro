@@ -1,0 +1,79 @@
+---
+import Layout from "../components/layout/Layout.astro";
+import SectionTitle from "../components/ui/SectionTitle.astro";
+import Button from "../components/ui/Button.astro";
+import config from "../data/config.json";
+
+const { seo, contacto, formspree } = config;
+---
+
+<Layout 
+  title="Contacto" 
+  description={seo.descriptionContacto}
+>
+  <section class="h-72 bg-brand-black relative flex items-center pt-24 border-b border-white/5">
+    <div class="container mx-auto px-6">
+      <nav class="mb-4">
+        <p class="font-condensed text-brand-gray text-sm tracking-[0.2em]">
+          <a href="/" class="hover:text-brand-white">INICIO</a> / <span class="text-brand-red">CONTACTO</span>
+        </p>
+      </nav>
+      <h1 class="font-display text-5xl md:text-7xl text-brand-white uppercase">CONTACTO</h1>
+    </div>
+  </section>
+
+  <section class="bg-brand-black py-24">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+        <div class="animate-on-scroll">
+          <SectionTitle title="ENVÍANOS UN MENSAJE" subtitle="RECIBÍ TU PRESUPUESTO EN EL DÍA" />
+          <form class="flex flex-col gap-4 mt-8" action={formspree.actionUrl} method="POST">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input name="nombre" type="text" placeholder="NOMBRE Y APELLIDO" required class="bg-brand-gray-light border border-white/10 p-4 font-condensed tracking-widest text-white focus:border-brand-red outline-none" />
+              <input name="email" type="email" placeholder="EMAIL DE CONTACTO" required class="bg-brand-gray-light border border-white/10 p-4 font-condensed tracking-widest text-white focus:border-brand-red outline-none" />
+            </div>
+            <input name="whatsapp" type="text" placeholder="CELULAR (WHATSAPP)" required class="bg-brand-gray-light border border-white/10 p-4 font-condensed tracking-widest text-white focus:border-brand-red outline-none" />
+            <input name="institucion" type="text" placeholder="CLUB O INSTITUCIÓN" required class="bg-brand-gray-light border border-white/10 p-4 font-condensed tracking-widest text-white focus:border-brand-red outline-none" />
+            <textarea name="mensaje" placeholder="¿QUÉ INDUMENTARIA NECESITÁS? (CANTIDAD, DEPORTE, ETC)" rows="5" required class="bg-brand-gray-light border border-white/10 p-4 font-condensed tracking-widest text-white focus:border-brand-red outline-none"></textarea>
+            <Button text="ENVIAR CONSULTA" variant="primary" class="w-full md:w-fit" />
+          </form>
+        </div>
+
+        <div class="flex flex-col gap-8 animate-on-scroll" style="transition-delay: 200ms">
+           <div class="p-8 bg-brand-gray-light border-l-4 border-brand-red">
+              <h4 class="font-condensed text-brand-red tracking-widest mb-2 uppercase">WhatsApp</h4>
+              <p class="font-display text-3xl text-white">{contacto.whatsapp}</p>
+              <p class="font-body text-brand-gray text-sm mt-2">Atención inmediata para presupuestos y consultas técnicas.</p>
+           </div>
+           
+           <div class="p-8 bg-brand-gray-light border-l-4 border-brand-red">
+              <h4 class="font-condensed text-brand-red tracking-widest mb-2 uppercase">Ubicación</h4>
+              <p class="font-body text-white text-lg leading-tight italic font-bold">
+                 {contacto.direccion.calle} {contacto.direccion.numero}, {contacto.direccion.localidad}, {contacto.direccion.provincia}
+              </p>
+              <p class="font-body text-brand-gray text-sm mt-2">{contacto.horario}.</p>
+           </div>
+
+           <div class="p-8 bg-brand-gray-light border-l-4 border-brand-red">
+              <h4 class="font-condensed text-brand-red tracking-widest mb-2 uppercase">Email Directo</h4>
+              <p class="font-display text-2xl text-white uppercase">{contacto.email}</p>
+           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {contacto.mapsEmbedUrl && (
+    <section id="mapa" class="h-[400px] w-full bg-brand-gray-light grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+       <iframe 
+        src={contacto.mapsEmbedUrl} 
+        width="100%" 
+        height="100%" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </section>
+  )}
+</Layout>

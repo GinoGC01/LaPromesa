@@ -1,0 +1,50 @@
+---
+import Layout from "../components/layout/Layout.astro";
+import config from "../data/config.json";
+import { colorsData } from "../data/colors";
+
+const { seo } = config;
+const families = ["rojos", "azules", "verdes", "amarillos", "naranjas", "violetas", "neutros"];
+---
+
+<Layout 
+  title={seo.titleColores} 
+  description={seo.descriptionColores}
+>
+  <section class="h-72 bg-brand-black relative flex items-center pt-24 border-b border-white/5">
+    <div class="container mx-auto px-6">
+      <nav class="mb-4">
+        <p class="font-condensed text-brand-gray text-sm tracking-[0.2em]">
+          <a href="/" class="hover:text-brand-white uppercase">Inicio</a> / <span class="text-brand-red uppercase">Colores</span>
+        </p>
+      </nav>
+      <h1 class="font-display text-5xl md:text-7xl text-brand-white uppercase">COLORES</h1>
+    </div>
+  </section>
+
+  <section class="bg-brand-black py-24">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col gap-20">
+        {families.map((family) => (
+          <div class="animate-on-scroll">
+            <h2 class="font-condensed text-brand-red text-2xl tracking-[0.3em] uppercase mb-8 border-b border-brand-red/20 pb-4">
+              {family}
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+              {colorsData.filter(c => c.familia === family).map((color) => (
+                <div class="flex flex-col items-center">
+                  <div 
+                    class="w-full aspect-square rounded-[2px] shadow-2xl mb-3 border border-white/10" 
+                    style={`background-color: ${color.hex}`}
+                  ></div>
+                  <span class="font-condensed text-brand-white text-xs tracking-widest uppercase">{color.nombre}</span>
+                  <span class="font-body text-brand-gray text-[10px] uppercase">{color.hex}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

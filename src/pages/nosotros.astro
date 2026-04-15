@@ -1,0 +1,71 @@
+---
+import Layout from "../components/layout/Layout.astro";
+import SectionTitle from "../components/ui/SectionTitle.astro";
+import config from "../data/config.json";
+
+const { seo, nosotros } = config;
+---
+
+<Layout 
+  title="Quiénes Somos" 
+  description={seo.descriptionNosotros}
+>
+  <section class="h-72 bg-brand-black relative flex items-center pt-24 border-b border-white/5">
+    <div class="container mx-auto px-6">
+      <nav class="mb-4">
+        <p class="font-condensed text-brand-gray text-sm tracking-[0.2em]">
+          <a href="/" class="hover:text-brand-white">INICIO</a> / <span class="text-brand-red">NOSOTROS</span>
+        </p>
+      </nav>
+      <h1 class="font-display text-5xl md:text-7xl text-brand-white uppercase">NOSOTROS</h1>
+    </div>
+  </section>
+
+  <section class="bg-brand-black py-24">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div class="animate-on-scroll">
+          <SectionTitle title="MÁS QUE UNA EMPRESA" subtitle="UNA FAMILIA AL SERVICIO DEL DEPORTE" />
+          {nosotros.historia.map(p => (
+            <p class="font-body text-brand-gray text-lg leading-relaxed mb-6">
+              {p}
+            </p>
+          ))}
+          
+          <div class="mt-12 p-8 border-l-2 border-brand-red bg-brand-gray-light italic">
+            <p class="text-brand-white text-xl font-body">"{nosotros.cita}"</p>
+            {nosotros.citaAutor && <p class="text-brand-red font-condensed mt-4 uppercase tracking-widest">— {nosotros.citaAutor}</p>}
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-4 animate-on-scroll">
+           {nosotros.valores.map(valor => (
+             <div class="bg-brand-gray-light p-6 border-b-2 border-brand-red hover:bg-brand-red/5 transition-colors">
+               <h4 class="font-condensed text-brand-red text-sm mb-2">{valor.titulo}</h4>
+               <p class="font-body text-brand-gray text-xs">{valor.descripcion}</p>
+             </div>
+           ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {nosotros.equipo && (
+    <section class="bg-[#111] py-24">
+      <div class="container mx-auto px-6">
+        <SectionTitle title="NUESTRO EQUIPO" centered />
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-16">
+          {nosotros.equipo.map(person => (
+            <div class="group animate-on-scroll">
+              <div class="aspect-square bg-brand-gray-light overflow-hidden mb-4">
+                <img src={person.foto} alt={person.nombre} class="w-full h-full object-cover transition-transform group-hover:scale-105" />
+              </div>
+              <h4 class="font-condensed text-brand-white text-lg tracking-widest">{person.nombre}</h4>
+              <p class="font-condensed text-brand-red text-xs uppercase">{person.rol}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</Layout>

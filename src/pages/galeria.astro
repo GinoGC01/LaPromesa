@@ -1,0 +1,40 @@
+---
+import Layout from "../components/layout/Layout.astro";
+import GalleryGrid from "../components/gallery/GalleryGrid";
+import config from "../data/config.json";
+
+const { seo } = config;
+
+// Import all design JSONs using Vite's glob (Astro 6+)
+const designFiles = import.meta.glob("../content/designs/*.json", { eager: true });
+const designs = Object.values(designFiles).map((file: any) => file.default);
+---
+
+<Layout 
+  title={seo.titleGaleria} 
+  description={seo.descriptionGaleria}
+>
+  <section class="h-72 bg-brand-black relative flex items-center pt-24 overflow-hidden border-b border-white/5">
+    <div class="absolute inset-0 opacity-10 pointer-events-none grayscale contrast-150">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+      <nav class="mb-4">
+        <p class="font-condensed text-brand-gray text-sm tracking-[0.2em]">
+          <a href="/" class="hover:text-brand-white transition-colors uppercase">Inicio</a> / 
+          <span class="text-brand-red uppercase">Galería</span>
+        </p>
+      </nav>
+      <h1 class="font-display text-6xl md:text-8xl text-brand-white uppercase leading-none">
+        GALERÍA
+      </h1>
+    </div>
+  </section>
+
+  <section class="bg-brand-black min-h-screen">
+    <div class="container mx-auto px-6">
+      <GalleryGrid client:load designs={designs} />
+    </div>
+  </section>
+</Layout>

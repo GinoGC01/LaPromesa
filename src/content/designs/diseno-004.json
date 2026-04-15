@@ -1,0 +1,12 @@
+{
+  "id": "huella-futbol",
+  "nombre": "HUELLA FC",
+  "imagen_front": "/images/designs/huella_front.PNG",
+  "imagen_back": "/images/designs/huella_back.PNG",
+  "deporte": "Fútbol",
+  "division": "Masculino",
+  "colores": ["verde", "negro"],
+  "tipo": "Camiseta Alternativa",
+  "descripcion": "Un diseño que deja marca. Gráficos disruptivos y tela técnica de última generación.",
+  "destacado": true
+}

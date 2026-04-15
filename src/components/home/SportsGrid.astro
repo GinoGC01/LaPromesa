@@ -1,0 +1,40 @@
+---
+import SectionTitle from "../ui/SectionTitle.astro";
+import { sports } from "../../data/sports";
+import config from "../../data/config.json";
+
+const { sportsGrid } = config;
+---
+
+<section class="bg-brand-black py-24 md:py-36 md:block hidden">
+  <div class="container mx-auto px-6">
+    <SectionTitle 
+      title={sportsGrid.titulo} 
+      centered={true} 
+    />
+
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-16 md:mt-24">
+      {sports.map((sport, index) => (
+        <div 
+          class="group bg-[#1A1A1A] border-l-4 border-brand-red p-8 flex flex-col cursor-pointer transition-all duration-300 hover:border-brand-red hover:bg-[#1a0003] hover:border animate-on-scroll"
+          style={`transition-delay: ${index * 100}ms`}
+        >
+          <!-- Placeholder Icon -->
+          <div class="text-brand-red mb-6 group-hover:scale-110 transition-transform duration-300">
+             <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+             </svg>
+          </div>
+          
+          <h3 class="font-condensed text-2xl text-brand-white uppercase mb-2 tracking-wide">
+            {sport.nombre}
+          </h3>
+          
+          <p class="font-body text-sm text-brand-gray leading-relaxed">
+            {sport.descripcion}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

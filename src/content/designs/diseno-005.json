@@ -1,0 +1,12 @@
+{
+  "id": "skate-style",
+  "nombre": "URBAN SKATE",
+  "imagen_front": "/images/designs/skate_front.PNG",
+  "imagen_back": "/images/designs/skate_back.PNG",
+  "deporte": "Skate",
+  "division": "Agnóstico",
+  "colores": ["gris", "naranja", "negro"],
+  "tipo": "Indumentaria Street",
+  "descripcion": "Estilo urbano y resistencia superior. Diseñado para el movimiento y la durabilidad en el asfalto.",
+  "destacado": true
+}

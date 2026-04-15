@@ -1,0 +1,159 @@
+{
+  "empresa": {
+    "nombre": "LA PROMESA",
+    "nombreLegal": "La Promesa Deportes S.R.L.",
+    "slogan": "TU EQUIPO. TU IDENTIDAD.",
+    "descripcion": "Indumentaria deportiva de alta gama diseñada para potenciar el orgullo de tu club.",
+    "desde": 2015,
+    "esEmpresaFamiliar": true
+  },
+  "contacto": {
+    "whatsapp": "5491122334455",
+    "whatsappMensaje": "Hola! Vi sus diseños en la página y quiero consultar por conjuntos para mi equipo.",
+    "telefono": "+54 11 2233-4455",
+    "email": "vtas@lapromesadeportes.com",
+    "direccion": {
+      "calle": "Av. Siempre Viva",
+      "numero": "123",
+      "localidad": "CABA",
+      "provincia": "Buenos Aires",
+      "pais": "Argentina",
+      "codigoPostal": "C1001"
+    },
+    "horario": "Lunes a viernes de 9 a 18hs",
+    "mapsEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.0!2d-58.4!3d-34.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDM2JzAwLjAiUyA1OMKwMjQnMDAuMCJX!5e0!3m2!1ses!2sar!4v1234567890",
+    "mapsApiKey": ""
+  },
+  "redes": {
+    "instagram": "https://instagram.com/lapromesadeportes",
+    "facebook": "https://facebook.com/lapromesadeportes",
+    "tiktok": "https://tiktok.com/@lapromesadeportes",
+    "youtube": ""
+  },
+  "seo": {
+    "siteUrl": "https://lapromesadeportes.com",
+    "titleHome": "Inicio | La Promesa Deportes — Indumentaria de Alta Gama",
+    "descriptionHome": "Indumentaria deportiva personalizada para clubes y escuelas. Diseños únicos y calidad profesional desde 2015.",
+    "titleGaleria": "Galería de Diseños | +150 Modelos Disponibles",
+    "descriptionGaleria": "Explorá nuestro catálogo completo de conjuntos para fútbol, hockey, básquet y más.",
+    "titleColores": "Paleta de Colores | Personalizá tu Equipo",
+    "descriptionColores": "Conocé las opciones de colores premium para la indumentaria de tu institución.",
+    "titleNosotros": "Sobre Nosotros | Empresa Familiar desde 2015",
+    "descriptionNosotros": "La historia y los valores de La Promesa Deportes, vestimos la pasión de tu club.",
+    "titleTestimonios": "Testimonios | Clientes que Confían en Nosotros",
+    "descriptionTestimonios": "Lo que dicen los dirigentes y entrenadores sobre la calidad de nuestros productos.",
+    "titleContacto": "Contacto | Solicitá tu Presupuesto",
+    "descriptionContacto": "Escribinos para recibir una cotización personalizada para tu equipo."
+  },
+  "schema": {
+    "name": "La Promesa Deportes",
+    "url": "https://lapromesadeportes.com",
+    "telephone": "+5491122334455",
+    "streetAddress": "Av. Siempre Viva 123",
+    "addressLocality": "CABA",
+    "addressRegion": "Buenos Aires",
+    "postalCode": "C1001",
+    "addressCountry": "AR",
+    "latitude": -34.6037,
+    "longitude": -58.3816,
+    "openingHours": ["Mo-Fr 09:00-18:00"]
+  },
+  "hero": {
+    "tagline": "— EMPRESA FAMILIAR · DESDE 2015 —",
+    "tituloFondo": "TU EQUIPO",
+    "tituloPrimerPlano": "TU IDENTIDAD",
+    "subtitulo": "Indumentaria deportiva de alta gama diseñada para potenciar el orgullo de tu club.",
+    "ctaPrimarioTexto": "VER DISEÑOS",
+    "ctaPrimarioHref": "/galeria",
+    "ctaSecundarioTexto": "CONSULTÁ POR WHATSAPP",
+    "bgImage": "/images/hero-bg.webp"
+  },
+  "trustBar": {
+    "metricas": [
+      { "numero": "+500", "label": "CONJUNTOS ENTREGADOS" },
+      { "numero": "+80", "label": "EQUIPOS VESTIDOS" },
+      { "numero": "10 AÑOS", "label": "DE EXPERIENCIA" },
+      { "numero": "TODO EL PAÍS", "label": "ENVÍOS" }
+    ]
+  },
+  "proceso": {
+    "pasos": [
+      { "numero": "01", "titulo": "DISEÑO", "descripcion": "Elegí uno de nuestros modelos o pedí uno 100% personalizado para tu equipo." },
+      { "numero": "02", "titulo": "PRESUPUESTO", "descripcion": "Te enviamos la cotización detallada según cantidades, talles y detalles del pedido." },
+      { "numero": "03", "titulo": "CONFECCIÓN", "descripcion": "Producción de alta precisión con materiales premium y tecnología de punta." },
+      { "numero": "04", "titulo": "ENTREGA", "descripcion": "Envío rápido a cualquier punto del país para que salgan a la cancha en tiempo récord." }
+    ]
+  },
+  "ctaFinal": {
+    "titulo": "¿LISTO PARA VESTIR A TU EQUIPO?",
+    "subtitulo": "SOLICITÁ TU PRESUPUESTO PERSONALIZADO HOY MISMO",
+    "botonTexto": "ESCRIBINOS POR WHATSAPP"
+  },
+  "nosotros": {
+    "historia": [
+      "Fundada en 2015, La Promesa nació con un objetivo claro: ofrecer a los clubes y escuelas de formación una indumentaria que combine calidad profesional con diseños innovadores.",
+      "Como empresa familiar, entendemos el valor del esfuerzo y la identidad. Por eso, acompañamos a cada cliente en el proceso de creación, asegurando que cada prenda represente fielmente los colores y el orgullo de su institución."
+    ],
+    "cita": "Vestimos la pasión que une a las instituciones.",
+    "citaAutor": "Fundador de La Promesa",
+    "valores": [
+      { "icono": "shield", "titulo": "CALIDAD PREMIUM", "descripcion": "Telas técnicas de alto rendimiento." },
+      { "icono": "clock", "titulo": "ENTREGA RÁPIDA", "descripcion": "Cumplimos con los tiempos pactados." },
+      { "icono": "edit", "titulo": "DISEÑO ÚNICO", "descripcion": "Personalización total para tu club." },
+      { "icono": "heart", "titulo": "PASIÓN", "descripcion": "Somos amantes del deporte como vos." }
+    ],
+    "equipo": [
+      { "nombre": "Juan Pérez", "rol": "Director General", "foto": "/images/team-1.webp" },
+      { "nombre": "María López", "rol": "Diseño y Producción", "foto": "/images/team-2.webp" }
+    ]
+  },
+  "formspree": {
+    "actionUrl": "https://formspree.io/f/placeholder"
+  },
+  "footer": {
+    "descripcionCorta": "Especialistas en indumentaria deportiva de alta gama.",
+    "fraseCierre": "Vistiendo la pasión de tu club con orgullo.",
+    "copyright": "© 2024 La Promesa Deportes. Todos los derechos reservados."
+  },
+  "whatsappFloat": {
+    "texto": "¡HABLEMOS!",
+    "visible": true
+  },
+  "disenos": {
+    "titulo": "NUESTROS DISEÑOS",
+    "subtitulo": "MÁS DE 150 MODELOS DISPONIBLES",
+    "accent": "150",
+    "cta": "VER TODOS LOS DISEÑOS →"
+  },
+  "siteOverview": {
+    "titulo": "TODO LO QUE NECESITÁS EN UN SOLO LUGAR",
+    "items": [
+      {
+        "title": "Galería de Diseños",
+        "description": "Explorá nuestro catálogo completo con más de 150 modelos exclusivos.",
+        "href": "/galeria"
+      },
+      {
+        "title": "Paleta de Colores",
+        "description": "Conocé las opciones de colores premium para personalizar tu equipo.",
+        "href": "/colores"
+      },
+      {
+        "title": "Quiénes Somos",
+        "description": "La historia y los valores de nuestra empresa familiar dedicada al deporte.",
+        "href": "/nosotros"
+      },
+      {
+        "title": "Testimonios",
+        "description": "Lo que dicen los clubes y escuelas que ya confían en nuestra calidad.",
+        "href": "/testimonios"
+      }
+    ]
+  },
+  "sportsGrid": {
+    "titulo": "CONJUNTOS PARA CADA DEPORTE"
+  },
+  "respuestaWhatsapp": {
+    "tiempoRespuesta": "2 horas"
+  }
+}

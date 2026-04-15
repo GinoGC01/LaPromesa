@@ -1,0 +1,152 @@
+---
+import Button from "../ui/Button.astro";
+import config from "../../data/config.json";
+
+const navLinks = [
+  { href: "/", label: "INICIO" },
+  { href: "/galeria", label: "GALERÍA" },
+  { href: "/colores", label: "COLORES" },
+  { href: "/nosotros", label: "NOSOTROS" },
+  { href: "/testimonios", label: "TESTIMONIOS" },
+  { href: "/contacto", label: "CONTACTO" },
+];
+
+const { pathname } = Astro.url;
+const currentPath = pathname.replace(/\/$/, "") || "/";
+const { empresa, contacto } = config;
+---
+
+<nav
+  id="navbar"
+  class="fixed top-0 z-50 w-full transition-all duration-300 py-6"
+>
+  <div class="container mx-auto px-6 flex justify-between items-center">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3">
+      <img src="/images/logo.webp" alt={empresa.nombre} class="h-10 md:h-12 w-auto object-contain" />
+      <span class="hidden md:block font-display text-3xl tracking-tighter text-brand-white uppercase leading-none">
+        {empresa.nombre.split(" ")[0]}<span class="text-brand-red">{empresa.nombre.split(" ")[1]}</span>
+      </span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <ul class="hidden md:flex space-x-8 items-center">
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={[
+                "font-condensed text-sm tracking-widest hover:text-brand-red transition-colors relative pb-1",
+                currentPath === link.href
+                  ? "text-brand-red after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-brand-red"
+                  : "text-brand-white",
+              ]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- CTA -->
+    <div class="hidden md:block">
+      <Button text="CONSULTÁ AHORA" variant="primary" href="/contacto" />
+    </div>
+
+    <!-- Burger Button -->
+    <button
+      id="mobile-menu-toggle"
+      class="md:hidden flex flex-col space-y-1.5 z-[110] p-2 group overflow-hidden"
+    >
+      <span
+        class="w-8 h-[2px] bg-brand-red transition-all duration-300 origin-left group-[.is-open]:rotate-45 group-[.is-open]:translate-x-[2px]"
+      ></span>
+      <span
+        class="w-8 h-[2px] bg-brand-red transition-all duration-300 group-[.is-open]:opacity-0 group-[.is-open]:translate-x-full"
+      ></span>
+      <span
+        class="w-8 h-[2px] bg-brand-red transition-all duration-300 origin-left group-[.is-open]:-rotate-45 group-[.is-open]:translate-x-[2px] group-[.is-open]:translate-y-[4px]"
+      ></span>
+    </button>
+  </div>
+</nav>
+<!-- Mobile Menu -->
+<div
+  id="mobile-menu"
+  class="fixed left-0 w-full h-screen bg-brand-black z-[100] flex flex-col items-center justify-center space-y-8 opacity-0 pointer-events-none transition-all duration-300 border-t border-brand-red/20"
+>
+  {
+    navLinks.map((link) => (
+      <a
+        href={link.href}
+        class="font-display text-4xl text-brand-white hover:text-brand-red transition-colors"
+      >
+        {link.label}
+      </a>
+    ))
+  }
+  <div class="pt-8 w-full px-12 text-center">
+    <Button text="ESCRIBINOS" variant="whatsapp" class="w-full" />
+  </div>
+</div>
+
+<style>
+  @reference "../../styles/global.css";
+
+  #navbar.scrolled {
+    @apply bg-brand-black/95 backdrop-blur-sm border-b-2 border-brand-red py-3;
+  }
+
+  /* When menu is open, navbar container should not clip and should stay on top */
+  #navbar.menu-open {
+    @apply bg-brand-black z-[100];
+  }
+</style>
+
+<script>
+  const navbar = document.getElementById("navbar");
+  const toggle = document.getElementById("mobile-menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  const closeMenu = () => {
+    menu?.classList.remove("opacity-100", "pointer-events-auto");
+    menu?.classList.add("opacity-0", "pointer-events-none");
+    toggle?.classList.remove("is-open");
+    navbar?.classList.remove("menu-open");
+    document.body.style.overflow = "";
+  };
+
+  const openMenu = () => {
+    if (navbar && menu) {
+      const navHeight = navbar.offsetHeight;
+      menu.style.top = `${navHeight}px`;
+      menu.style.height = `calc(100vh - ${navHeight}px)`;
+    }
+    menu?.classList.remove("opacity-0", "pointer-events-none");
+    menu?.classList.add("opacity-100", "pointer-events-auto");
+    toggle?.classList.add("is-open");
+    navbar?.classList.add("menu-open");
+    document.body.style.overflow = "hidden";
+  };
+
+  // Scroll logic
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 80) {
+      navbar?.classList.add("scrolled");
+    } else {
+      navbar?.classList.remove("scrolled");
+    }
+  });
+
+  // Mobile menu logic
+  toggle?.addEventListener("click", () => {
+    const isVisible = menu?.classList.contains("opacity-100");
+    if (isVisible) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+</script>
