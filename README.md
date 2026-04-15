@@ -4,10 +4,10 @@ Sitio web profesional para **La Promesa Deportes**, empresa familiar dedicada a 
 
 ## 🚀 Stack Tecnológico
 - **Framework**: [Astro](https://astro.build/) (Static Output)
-- **UI library**: [React 19](https://react.dev/) (para el sistema de galería filtrable)
+- **UI library**: [React 19](https://react.dev/) (para el sistema de galería interactiva)
 - **Estilos**: [Tailwind CSS v4](https://tailwindcss.com/)
 - **Fuentes**: Anton (Display), Barlow Condensed (Titles), Inter (Body)
-- **Iconografía**: Custom SVGs
+- **Efectos**: 3D Flip Cards y Tipografía en Capas (Z-Layering)
 
 ## 🛠️ Instalación y Uso
 
@@ -35,8 +35,8 @@ Este proyecto utiliza un sistema de **Fuente Única de Verdad**. Todo el conteni
 ### Campos principales para el cliente:
 - **`empresa`**: Nombre y datos básicos de la marca.
 - **`contacto`**: Número de WhatsApp, Email y Dirección.
-- **`hero`**: Todos los textos y la imagen de fondo de la sección principal.
-- **`trustBar`**: Las 4 métricas que aparecen en la barra roja (ej: "+500 conjuntos").
+- **`hero`**: Configuración del efecto de tipografía en capas (`tituloFondo` y `tituloPrimerPlano`).
+- **`trustBar`**: Las métricas que aparecen en la barra roja (ej: "+500 conjuntos").
 - **`nosotros`**: La historia de la empresa y los perfiles del equipo.
 - **`seo`**: Títulos y descripciones para motores de búsqueda de cada página.
 
@@ -48,41 +48,36 @@ No es necesario cambiar el número en cada botón. Al actualizar el campo `whats
 - `src/content/designs/`: Archivos JSON que alimentan la galería.
 - `src/data/`: Datos estáticos (colores, deportes, testimonios).
 - `src/components/`:
-  - `layout/`: Navbar, Footer y Layout base.
+  - `layout/`: Navbar (con logo dinámico), Footer y Layout base.
   - `ui/`: Componentes atómicos (Button, Badge, StatCard).
-  - `gallery/`: Sistema React de filtrado y modal.
-  - `home/`: Secciones específicas del inicio.
+  - `gallery/`: Sistema React de filtrado, modal y **Cards 3D**.
+  - `home/`: Secciones con efectos premium (Hero layering, TrustBar).
 - `src/pages/`: Rutas del sitio (Inicio, Galería, Nosotros, etc.).
 
 ## 📝 Guía de Edición
 
-### Agregar nuevos diseños
-Para sumar un diseño a la galería, creá un nuevo archivo `.json` en `src/content/designs/` siguiendo esta estructura:
+### Agregar nuevos diseños (Efecto Frente/Dorso)
+Para sumar un diseño a la galería, creá un nuevo archivo `.json` en `src/content/designs/`. El sistema soporta previsualización 3D, por lo que necesitás dos imágenes:
 ```json
 {
-  "id": "diseno-011",
+  "id": "diseno-nuevo",
   "nombre": "Nombre del modelo",
-  "imagen": "/images/designs/011.webp",
-  "imagenes_extra": ["/images/designs/011-a.webp"],
-  "deporte": "futbol",
-  "division": "primera",
-  "colores": ["rojo-fuego", "negro"],
-  "tipo": "camiseta",
-  "descripcion": "Descripción breve del producto.",
-  "destacado": false
+  "imagen_front": "/images/designs/nombre_front.webp",
+  "imagen_back": "/images/designs/nombre_back.webp",
+  "deporte": "Fútbol",
+  "division": "Masculino",
+  "colores": ["rojo", "negro"],
+  "tipo": "Conjunto Competencia",
+  "descripcion": "Descripción detallada.",
+  "destacado": true
 }
 ```
 
 ### Cambiar el número de WhatsApp
-Buscá la cadena `wa.me` en todo el proyecto. Los componentes principales son `src/components/contact/WhatsAppCTA.astro` y `src/components/layout/Footer.astro`.
+Simplemente actualizá el campo `whatsapp` en `src/data/config.json`. El formato debe ser internacional (ej: `5491122334455`).
 
-### Conectar Formulario (Formspree)
-En `src/pages/contacto.astro`, agregá el atributo `action="https://formspree.io/f/TU_ID"` y `method="POST"` a la etiqueta `<form>`. Asegurate de que cada input tenga el atributo `name`.
-
-## ⏳ Pendientes
-- [ ] Reemplazar imágenes placeholder por fotos reales de productos.
-- [ ] Cargar catálogo completo de diseños (actualmente 10 de muestra).
-- [ ] Verificar SEO final una vez definido el dominio definitivo.
+### Conectar Formulario de Contacto
+El formulario en `src/pages/contacto.astro` ya está preparado para Formspree. Solo debés actualizar el campo `actionUrl` en el bloque `formspree` de `config.json` con tu ID de formulario.
 
 ---
-*Desarrollado con pasión para deportistas.*
+*Desarrollado para La Promesa Deportes — Tu equipo. Tu identidad.*
