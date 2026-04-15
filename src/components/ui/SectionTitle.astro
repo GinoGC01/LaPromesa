@@ -11,18 +11,30 @@ const { title, subtitle, centered = false, accentWord } = Astro.props;
 let formattedSubtitle = subtitle;
 if (subtitle && accentWord) {
   formattedSubtitle = subtitle.replace(
-    accentWord, 
-    `<span class="text-brand-red">${accentWord}</span>`
+    accentWord,
+    `<span class="text-brand-red">${accentWord}</span>`,
   );
 }
 ---
 
-<div class:list={["flex flex-col mb-12", centered ? "items-center text-center" : "items-start"]}>
+<div
+  class:list={[
+    "flex flex-col mb-12",
+    centered ? "items-center text-center" : "items-start",
+  ]}
+>
   <div class="w-12 h-[3px] bg-brand-red mb-4"></div>
-  <h2 class="font-display text-4xl md:text-6xl text-brand-white uppercase leading-none mb-2">
+  <h2
+    class="font-display text-3xl md:text-6xl text-brand-white uppercase leading-none mb-2"
+  >
     {title}
   </h2>
-  {formattedSubtitle && (
-    <p class="font-condensed text-xl md:text-2xl text-brand-white/90 uppercase tracking-widest" set:html={formattedSubtitle} />
-  )}
+  {
+    formattedSubtitle && (
+      <p
+        class="font-condensed text-xl md:text-2xl text-brand-white/90 uppercase tracking-widest"
+        set:html={formattedSubtitle}
+      />
+    )
+  }
 </div>

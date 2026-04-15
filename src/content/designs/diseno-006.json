@@ -1,10 +1,10 @@
 {
   "id": "swimm-pro",
-  "nombre": "SWIMM PERFORMANCE",
+  "nombre": "SWIMMING",
   "imagen_front": "/images/designs/swimm_front.PNG",
   "imagen_back": "/images/designs/swimm_back.PNG",
   "deporte": "Natación",
-  "division": "Agnóstico",
+  "division": "Femenino",
   "colores": ["azul", "celeste"],
   "tipo": "Bata / Entrenamiento",
   "descripcion": "Tecnología hidrodinámica aplicada al diseño. Colores vibrantes y resistencia al cloro.",
