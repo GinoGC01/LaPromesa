@@ -5,7 +5,7 @@
   "imagen_back": "/images/designs/sm_back.PNG",
   "deporte": "Fútbol",
   "division": "Masculino",
-  "colores": ["negro", "blanco", "rojo"],
+  "colores": ["negro", "blanco"],
   "tipo": "Conjunto Competencia",
   "descripcion": "Diseño icónico y agresivo para el equipo SM. Confeccionado en Microfibra Dry-Fit de alta performance.",
   "destacado": true

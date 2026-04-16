@@ -11,6 +11,10 @@ interface GalleryFiltersProps {
   setFilterColores: (v: string[] | ((prev: string[]) => string[])) => void;
   filterTipo: string;
   setFilterTipo: (v: string) => void;
+  uniqueDivisions: string[];
+  uniqueDeportes: string[];
+  uniqueTipos: string[];
+  uniqueColores: string[];
 }
 
 const GalleryFilters: React.FC<GalleryFiltersProps> = (props) => {
@@ -28,7 +32,7 @@ const GalleryFilters: React.FC<GalleryFiltersProps> = (props) => {
       <section>
         <h4 className="font-condensed text-brand-red tracking-[0.2em] mb-4 text-sm">DIVISIÓN</h4>
         <div className="flex flex-wrap gap-2 text-[10px]">
-          {["todos", "primera", "b-nacional", "ascenso"].map(div => (
+          {["todos", ...props.uniqueDivisions].map(div => (
             <button
               key={div}
               onClick={() => props.setFilterDivision(div)}
@@ -48,27 +52,17 @@ const GalleryFilters: React.FC<GalleryFiltersProps> = (props) => {
       <section>
         <h4 className="font-condensed text-brand-red tracking-[0.2em] mb-4 text-sm">DEPORTE</h4>
         <div className="grid grid-cols-2 gap-2 text-[10px]">
-          <button
-            onClick={() => props.setFilterDeporte("todos")}
-            className={`px-3 py-2 border rounded-[2px] tracking-widest uppercase transition-all ${
-              props.filterDeporte === "todos" 
-              ? "bg-brand-red border-brand-red text-white" 
-              : "bg-transparent border-white/20 text-brand-white/60 hover:border-white"
-            }`}
-          >
-            TODOS
-          </button>
-          {sports.map(sport => (
+          {["todos", ...props.uniqueDeportes].map(sport => (
             <button
-              key={sport.id}
-              onClick={() => props.setFilterDeporte(sport.id)}
+              key={sport}
+              onClick={() => props.setFilterDeporte(sport)}
               className={`px-3 py-2 border rounded-[2px] tracking-widest uppercase transition-all ${
-                props.filterDeporte === sport.id 
+                props.filterDeporte === sport 
                 ? "bg-brand-red border-brand-red text-white" 
                 : "bg-transparent border-white/20 text-brand-white/60 hover:border-white"
               }`}
             >
-              {sport.nombre}
+              {sport === "todos" ? "TODOS" : sport}
             </button>
           ))}
         </div>
@@ -78,7 +72,7 @@ const GalleryFilters: React.FC<GalleryFiltersProps> = (props) => {
       <section>
         <h4 className="font-condensed text-brand-red tracking-[0.2em] mb-4 text-sm">TIPO DE PRENDA</h4>
         <div className="grid grid-cols-2 gap-2 text-[10px]">
-          {["todos", "conjunto-completo", "camiseta", "short", "arquero"].map(tipo => (
+          {["todos", ...props.uniqueTipos].map(tipo => (
             <button
               key={tipo}
               onClick={() => props.setFilterTipo(tipo)}
@@ -98,7 +92,7 @@ const GalleryFilters: React.FC<GalleryFiltersProps> = (props) => {
       <section>
         <h4 className="font-condensed text-brand-red tracking-[0.2em] mb-4 text-sm">COLORES PRINCIPALES</h4>
         <div className="grid grid-cols-6 lg:grid-cols-5 gap-3">
-          {colorsData.map(color => (
+          {colorsData.filter(c => props.uniqueColores.includes(c.id)).map(color => (
             <button
               key={color.id}
               onClick={() => toggleColor(color.id)}

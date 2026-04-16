@@ -28,11 +28,17 @@ const GalleryGrid: React.FC<GalleryGridProps> = ({ designs }) => {
   const [filterTipo, setFilterTipo] = useState<string>("todos");
   const [selectedDesign, setSelectedDesign] = useState<Design | null>(null);
 
+  // Extract unique values dynamically from loaded designs
+  const uniqueDivisions = useMemo(() => Array.from(new Set(designs.map(d => d.division.toLowerCase()))).sort(), [designs]);
+  const uniqueDeportes = useMemo(() => Array.from(new Set(designs.map(d => d.deporte.toLowerCase()))).sort(), [designs]);
+  const uniqueTipos = useMemo(() => Array.from(new Set(designs.map(d => d.tipo.toLowerCase()))).sort(), [designs]);
+  const uniqueColores = useMemo(() => Array.from(new Set(designs.flatMap(d => d.colores))).sort(), [designs]);
+
   const filteredDesigns = useMemo(() => {
     return designs.filter((design) => {
-      const matchDivision = filterDivision === "todos" || design.division === filterDivision;
-      const matchDeporte = filterDeporte === "todos" || design.deporte === filterDeporte;
-      const matchTipo = filterTipo === "todos" || design.tipo === filterTipo;
+      const matchDivision = filterDivision === "todos" || design.division.toLowerCase() === filterDivision;
+      const matchDeporte = filterDeporte === "todos" || design.deporte.toLowerCase() === filterDeporte;
+      const matchTipo = filterTipo === "todos" || design.tipo.toLowerCase() === filterTipo;
       const matchColores = filterColores.length === 0 || 
                            filterColores.every(color => design.colores.includes(color));
       
@@ -59,6 +65,10 @@ const GalleryGrid: React.FC<GalleryGridProps> = ({ designs }) => {
         filterDeporte={filterDeporte} setFilterDeporte={setFilterDeporte}
         filterColores={filterColores} setFilterColores={setFilterColores}
         filterTipo={filterTipo} setFilterTipo={setFilterTipo}
+        uniqueDivisions={uniqueDivisions}
+        uniqueDeportes={uniqueDeportes}
+        uniqueTipos={uniqueTipos}
+        uniqueColores={uniqueColores}
       />
 
       {/* Main Content */}

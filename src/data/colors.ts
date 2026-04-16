@@ -6,6 +6,16 @@ export interface ColorEntry {
 }
 
 export const colorsData: ColorEntry[] = [
+  // Generics (Commonly used by client)
+  { id: "rojo", nombre: "Rojo", hex: "#E8001D", familia: "rojos" },
+  { id: "azul", nombre: "Azul", hex: "#0033A0", familia: "azules" },
+  { id: "celeste", nombre: "Celeste", hex: "#00AEEF", familia: "azules" },
+  { id: "verde", nombre: "Verde", hex: "#228B22", familia: "verdes" },
+  { id: "amarillo", nombre: "Amarillo", hex: "#FFD700", familia: "amarillos" },
+  { id: "naranja", nombre: "Naranja", hex: "#FF8C00", familia: "naranjas" },
+  { id: "violeta", nombre: "Violeta", hex: "#7851A9", familia: "violetas" },
+  { id: "gris", nombre: "Gris", hex: "#A0A0A0", familia: "neutros" },
+
   // Rojos
   { id: "rojo-fuego", nombre: "Rojo Fuego", hex: "#E8001D", familia: "rojos" },
   { id: "rojo-vino", nombre: "Rojo Vino", hex: "#7B0D1E", familia: "rojos" },
